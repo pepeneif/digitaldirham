@@ -11,12 +11,15 @@ What is DigitalDirham?
 
 DigitalDirham is a lite version of Bitcoin using scrypt as a proof-of-work algorithm.
  - 0.5 minute block targets
- - subsidy halves in 10k blocks (~4 years)
+ - subsidy halves in 10k blocks
  - ~10 million total coins
 
 The rest is the same as Bitcoin.
  - 50 coins per block
  - 2016 blocks to retarget difficulty
+
+Important note
+ - RPC Ports are 9933 and for testnet 19933
 
 For more information, as well as an immediately useable, binary version of
 the DigitalDirham client sofware, see http://www.digitaldirham.org.

@@ -1087,7 +1087,19 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
-    int64 nSubsidy = 100 * COIN;
+    int64 nSubsidy = 500 * COIN;
+     if(nHeight == 2)
+      {
+       nSubsidy = 2000000 * COIN;
+      }
+     else if(nHeight < 5000)
+      {
+       nSubsidy = 5000 * COIN;
+      }
+     else if(nHeight < 10000)
+      {
+       nSubsidy = 2500 * COIN;
+      }
 
     // Subsidy is cut in half every 100000 blocks, which will occur approximately every 4 years
     nSubsidy >>= (nHeight / 100000); // DigitalDirham: 840k blocks in ~4 years
@@ -1095,8 +1107,8 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     return nSubsidy + nFees;
 }
 
-static const int64 nTargetTimespan = 1 * 24 * 60 * 60; // DigitalDirham: readjust difficulty once a day
-static const int64 nTargetSpacing = .5 * 60; // DigitalDirham: one block each 30 sec
+static const int64 nTargetTimespan = 10 * 60; // DigitalDirham: readjust difficulty every 10 minutes
+static const int64 nTargetSpacing = 1 * 30; // DigitalDirham: one block each 30 sec
 static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 
 //
@@ -2742,9 +2754,9 @@ bool LoadBlockIndex()
 {
     if (fTestNet)
     {
-        pchMessageStart[0] = 0xfc;
-        pchMessageStart[1] = 0xc1;
-        pchMessageStart[2] = 0xb7;
+        pchMessageStart[0] = 0xd1;
+        pchMessageStart[1] = 0xb2;
+        pchMessageStart[2] = 0xa4;
         pchMessageStart[3] = 0xdc;
         hashGenesisBlock = uint256("0x3d01877551f78726e638505d6562c0e192b2ad1cd3325ca795e085bca2ca40f6");
     }
@@ -2785,7 +2797,7 @@ bool InitBlockIndex() {
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         txNew.vout[0].nValue = 50 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("043384710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
         CBlock block;
         block.vtx.push_back(txNew);
         block.hashPrevBlock = 0;
@@ -3126,7 +3138,7 @@ bool static AlreadyHave(const CInv& inv)
 // The message start string is designed to be unlikely to occur in normal data.
 // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
 // a large 4-byte int at any alignment.
-unsigned char pchMessageStart[4] = { 0xfb, 0xc0, 0xb6, 0xdb }; // DigitalDirham: increase each by adding 2 to bitcoin's value.
+unsigned char pchMessageStart[4] = { 0xc3, 0xd2, 0xd1, 0xbd }; // DigitalDirham: increase each by adding 2 to bitcoin's value.
 
 
 void static ProcessGetData(CNode* pfrom)
