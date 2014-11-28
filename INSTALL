@@ -1,0 +1,9 @@
+Building DigitalDirham
+
+See doc/readme-qt.rst for instructions on building DigitalDirham-Qt,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of DigitalDirham.
+
+See doc/build-*.txt for instructions on building digitaldirhamd,
+the intended-for-services, no-graphical-interface, reference
+implementation of DigitalDirham.
