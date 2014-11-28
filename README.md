@@ -15,8 +15,8 @@ DigitalDirham is a lite version of Bitcoin using scrypt as a proof-of-work algor
  - ~10 million total coins
 
 The rest is the same as Bitcoin.
- - 50 coins per block
- - 2016 blocks to retarget difficulty
+ - 500 coins per block
+ - 20 blocks to retarget difficulty
 
 Important note
  - RPC Ports are 9933 and for testnet 19933
